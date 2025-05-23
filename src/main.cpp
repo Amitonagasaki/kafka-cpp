@@ -60,9 +60,9 @@ int main(int argc, char* argv[]) {
     std::cout << "Client connected\n";
     int msize = htonl(5);
     int cid= htonl(7);
-    int32_t cid;
-    memcpy(&cid,buffer+8,sizeof(cid));
-    int32_t msize=htonl(sizeof(cid));
+    int32_t correlation_id;
+    memcpy(&correlation_id,buffer+8,sizeof(correlation_id));
+    int32_t message_size=htonl(sizeof(correlation_id));
 
     write(client_fd,&msize,4);
     write(client_fd,&cid,4);

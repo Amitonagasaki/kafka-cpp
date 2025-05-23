@@ -60,6 +60,10 @@ int main(int argc, char* argv[]) {
     std::cout << "Client connected\n";
     int msize = htonl(5);
     int cid= htonl(7);
+    int32_t cid;
+    memcpy(&cid,buffer+8,sizeof(cid));
+    int32_t msize=htonl(sizeof(cid));
+
     write(client_fd,&msize,4);
     write(client_fd,&cid,4);
     close(client_fd);

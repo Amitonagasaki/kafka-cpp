@@ -64,8 +64,8 @@ int main(int argc, char* argv[]) {
     memcpy(&correlation_id,buffer+8,sizeof(correlation_id));
     int32_t message_size=htonl(sizeof(correlation_id));
 
-    write(client_fd,&msize,4);
-    write(client_fd,&cid,4);
+    write(client_fd,&message_size,4);
+    write(client_fd,&correlation_id,4);
     close(client_fd);
 
     close(server_fd);

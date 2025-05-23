@@ -58,8 +58,8 @@ int main(int argc, char* argv[]) {
     
     int client_fd = accept(server_fd, reinterpret_cast<struct sockaddr*>(&client_addr), &client_addr_len);
     std::cout << "Client connected\n";
-    int msize = htonl(5);
-    int cid= htonl(7);
+    // int msize = htonl(5);
+    // int cid= htonl(7);
     int32_t correlation_id;
     memcpy(&correlation_id,buffer+8,sizeof(correlation_id));
     int32_t message_size=htonl(sizeof(correlation_id));

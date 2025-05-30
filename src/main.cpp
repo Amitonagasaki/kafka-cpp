@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
    char buffer[1024];
 
     ssize_t bytes_read = recv(client_fd, buffer, sizeof(buffer), 0);
-
+     req_buf[bytes_read] = 0;
     if (bytes_read <= 0) {
 
         std::cerr << "Failed to read request or client disconnected" << std::endl;
@@ -82,7 +82,8 @@ int main(int argc, char* argv[]) {
     send(client_fd, &correlation_id, sizeof(correlation_id), 0);
 
     std::cout << "Response sent\n" << std::endl;
-   
+    int error_code =35<<8;
+    write(client_fd,&error_code,2);
     close(client_fd);
 
     close(server_fd);

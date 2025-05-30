@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
    char buffer[1024];
 
     ssize_t bytes_read = recv(client_fd, buffer, sizeof(buffer), 0);
-     req_buf[bytes_read] = 0;
+    
     if (bytes_read <= 0) {
 
         std::cerr << "Failed to read request or client disconnected" << std::endl;
